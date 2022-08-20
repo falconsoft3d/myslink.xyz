@@ -4,10 +4,8 @@ import { Col, Row, Alert, Statistic, Timeline } from 'antd';
 import { Typography } from 'antd';
 import Marquee from 'react-fast-marquee';
 
-const { Title, Link } = Typography;
-
-
 export default function HomePage() {
+  const { Title, Link } = Typography;
   return (
     <HomeLayout>
         <br/>

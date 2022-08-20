@@ -1,18 +1,15 @@
 import React from 'react'
 import { Menu } from "antd";
 import "antd/dist/antd.css";
-
-
-const { SubMenu } = Menu;
+import {Link} from "react-router-dom";
 
 export default function NavBar() {
   return (
     <Menu mode="horizontal">
-        <SubMenu title="Home"/>
-        <SubMenu title="Registrar"/>
-        <SubMenu title="Iniciar Sección"/>
-        <SubMenu title="Mis Links"/>
-        <SubMenu title="Código Fuente"/>
+        <Menu.Item><Link to="/">Home</Link></Menu.Item>
+        <Menu.Item><Link to="/login">Entrar</Link></Menu.Item>
+        <Menu.Item><Link to="/register">Registrar</Link></Menu.Item>
+        <Menu.Item><Link to="/links">Links</Link></Menu.Item>
       </Menu>
   )
 }

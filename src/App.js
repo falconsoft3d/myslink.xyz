@@ -1,17 +1,20 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import HomePage from './pages/HomePage';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LinksPage from "./pages/LinksPage";
+import CreateLinkPage from './pages/CreateLinkPage';
 function App() {
   return (
     <BrowserRouter>
-          <ToastContainer/>
           <Routes>
 
           <Route path="/links" element={
                         <LinksPage />
+                    }/> 
+
+          <Route path="/create-link" element={
+                        <CreateLinkPage />
                     }/>  
             
           <Route path="/login" element={
@@ -26,7 +29,6 @@ function App() {
                         <HomePage />
                     }/>
           </Routes>
-        <ToastContainer/>
       </BrowserRouter>
   );
 }
