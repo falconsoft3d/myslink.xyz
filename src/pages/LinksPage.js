@@ -15,19 +15,18 @@ export default function LinksPages() {
       title: 'Link',
       dataIndex: 'link',
       key: 'link',
-      render: text => <a href="{text}">{text}</a>,
+      render: (text) => <a href={text}>{text}</a>,
     },
     {
       title: 'Link Cortado',
       dataIndex: 'linkq',
       key: 'linkq',
-      render: text => <a href="{text}">{text}</a>,
+      render: (text) => <a href={'/' + text}>{text}</a>,
     },
     {
       title: 'Clicks',
       dataIndex: 'qty',
       key: 'qty',
-      render: text => <a href="{text}">{text}</a>,
     },
     {
       title: 'Acciones',
