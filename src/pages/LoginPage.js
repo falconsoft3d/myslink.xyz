@@ -12,12 +12,11 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { Title, } = Typography;
 
-
   const onFinish = async (values) => {
-    console.log('Success:', values);
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
-      navigate('/links');
+      navigate('/admin/links');
+      notification.open({ message: "Hola", description: "Bienvenido", duration: 2 });
     } catch (error) {
       let mensaje;
       switch (error.code) {
@@ -31,7 +30,7 @@ export default function LoginPage() {
           mensaje = 'Hubo un error al intentar crear la cuenta.'
           break;
       }
-      notification.open({ message: mensaje, description: error, duration: 2 });
+      notification.open({ message: "Error", description: mensaje, duration: 2 });
     }
   };
 

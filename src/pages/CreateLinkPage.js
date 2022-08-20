@@ -12,16 +12,17 @@ export default function CreateLinkPage() {
   
   
   const onFinish = async (values) => {
+    const shortened = Math.random().toString(36).substr(2, 7);
     const data = {
       link : values.link,
-      linkq : "1",
-      user_id : user.uid
+      linkq : shortened,
+      user_id : user.uid,
+      qty : 0,
   }
 
     try {
-      const docRef = await addDoc(collection(db, "links"), data);
-
-      navigate("/links")
+      await addDoc(collection(db, "links"), data)
+      navigate("/admin/links")
       
       notification.open({
         message: 'Mensaje',

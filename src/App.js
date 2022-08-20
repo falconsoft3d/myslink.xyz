@@ -6,35 +6,41 @@ import LinksPage from "./pages/LinksPage";
 import CreateLinkPage from './pages/CreateLinkPage';
 import {AuthProvider} from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
+import Redirect from './pages/Redirect';
 function App() {
   return (
     <AuthProvider>
     <BrowserRouter>
           <Routes>
 
-          <Route path="/links" element={
+          <Route path="/admin/links" element={
                         <PrivateRoute>
                           <LinksPage />
                         </PrivateRoute>
                     }/>
           
-          <Route path="/create-link" element={
+          <Route path="/admin/create-link" element={
                         <PrivateRoute>
                           <CreateLinkPage />
                         </PrivateRoute>
                     }/>
             
-          <Route path="/login" element={
+          <Route path="/admin/login" element={
                         <LoginPage />
                     }/>
 
-          <Route path="/register" element={
+          <Route path="/admin/register" element={
                         <RegisterPage />
                     }/> 
 
           <Route path="/" element={
                         <HomePage />
                     }/>
+        
+         <Route path="/:id" element={
+                        <Redirect />
+                    }/>
+
           </Routes>
       </BrowserRouter>
       </AuthProvider>

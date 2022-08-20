@@ -14,7 +14,7 @@ export default function NavBar() {
   const logout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/admin/login');
     } catch (error) {
       console.log(error);
     }
@@ -25,13 +25,13 @@ export default function NavBar() {
       <Menu.Item><Link to="/">Home</Link></Menu.Item>
       {!user &&
         <>
-          <Menu.Item><Link to="/login">Login</Link></Menu.Item>
-          <Menu.Item><Link to="/register">Registrar</Link></Menu.Item>
+          <Menu.Item><Link to="/admin/login">Login</Link></Menu.Item>
+          <Menu.Item><Link to="/admin/register">Registrar</Link></Menu.Item>
         </>
       }
       {user &&
         <>
-          <Menu.Item><Link to="/links">Links</Link></Menu.Item>
+          <Menu.Item><Link to="/admin/links">Links</Link></Menu.Item>
           <Menu.Item onClick={logout}>Cerrar</Menu.Item>
         </>
       }

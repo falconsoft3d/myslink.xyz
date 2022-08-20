@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import DashboardLayout from "./../layout/DashboardLayout";
-import { Space, Table, Button, Popconfirm, notification } from 'antd';  
+import { Space, Table, Button, Popconfirm} from 'antd';  
 import { DeleteOutlined } from '@ant-design/icons';
 import {db} from "../firebase/firebaseConfig";
 import {collection, onSnapshot, deleteDoc, doc, query, where} from 'firebase/firestore';
@@ -21,6 +21,12 @@ export default function LinksPages() {
       title: 'Link Cortado',
       dataIndex: 'linkq',
       key: 'linkq',
+      render: text => <a href="{text}">{text}</a>,
+    },
+    {
+      title: 'Clicks',
+      dataIndex: 'qty',
+      key: 'qty',
       render: text => <a href="{text}">{text}</a>,
     },
     {
@@ -55,11 +61,11 @@ export default function LinksPages() {
     );
 }, []);
 
-console.log(links)
+// console.log(links)
 
 
 const deleteItem = async(id) => {
-  console.log(id)
+  // console.log(id)
   try {
       await deleteDoc(doc(db, 'links', id));
   } catch(error){
@@ -73,7 +79,7 @@ return (
     <DashboardLayout>
       <div>
       <Button
-        href='/create-link'
+        href='/admin/create-link'
         type="primary"
         style={{
           marginBottom: 16,

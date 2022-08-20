@@ -9,7 +9,6 @@ import {useNavigate} from 'react-router-dom';
 import {Link} from "react-router-dom";
 import {auth} from './../firebase/firebaseConfig';
 import {signOut} from 'firebase/auth';
-import {useAuth} from './../contexts/AuthContext';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -17,20 +16,16 @@ export default function DashboardLayout(props) {
     const {children} = props;
     const [collapsed, setCollapsed] = useState(false);
     const navigate = useNavigate();
-  const { user } = useAuth();
 
   const logout = async() => {
 		try {
 			await signOut(auth);
-			navigate('/login');
+			navigate('/admin/login');
 		} catch(error){
 			console.log(error);
 		}
 	}
-  
-    
     return (
-    
     <>
 
 <Layout
@@ -45,10 +40,10 @@ export default function DashboardLayout(props) {
               <Link to="/"><HomeOutlined /> Inicio</Link>
             </Menu.Item>
             <Menu.Item key="links">
-              <Link to="/links"><FileOutlined/> Mis Links</Link>
+              <Link to="/admin/links"><FileOutlined/> Mis Links</Link>
             </Menu.Item>
             <Menu.Item key="link">
-              <Link to="/create-link"><FileOutlined/> Crear Link</Link>
+              <Link to="/admin/create-link"><FileOutlined/> Crear Link</Link>
             </Menu.Item>
             <Menu.Item key="close">
               <Link to="/" onClick={logout}><LoginOutlined /> Cerrar</Link>

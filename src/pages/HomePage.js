@@ -27,7 +27,7 @@ export default function HomePage() {
               <Link href="https://es.reactjs.org" target="_blank"> React, </Link>
               <Link href="https://firebase.google.com" target="_blank"> Firebase. </Link>
               Mi nombtre es Marlon Falcón, y si quieres seguir mi trabajo puedes seguirme en GitHub, Aqui te dejo el codigo fuente de layout
-              aplicación para que lo puedas despegar:  <Link href="https://github.com/falconsoft3d/myslink.xyz" target="_blank"> MySlink. </Link>
+              aplicación para que lo puedas descargar:  <Link href="https://github.com/falconsoft3d/myslink.xyz" target="_blank"> MySlink. </Link>
           </p>
           <Alert message="Nombre: Marlon Fálcon Hernandez." type="success" />
           <br/>
