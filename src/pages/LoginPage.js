@@ -73,7 +73,7 @@ export default function LoginPage() {
                 Entrar
               </Button>
               <br></br>
-              O <a href="/register">registrate ahora!</a>
+              O <a href="/admin/register">registrate ahora!</a>
             </Form.Item>
           </Form>
         </Col>

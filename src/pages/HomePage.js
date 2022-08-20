@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeLayout from '../layout/HomeLayout'
-import { Col, Row, Alert, Statistic, Timeline } from 'antd';
+import { Col, Row, Alert, Statistic, Timeline, Image } from 'antd';
 import { Typography } from 'antd';
 import Marquee from 'react-fast-marquee';
 
@@ -50,6 +50,26 @@ export default function HomePage() {
             <Timeline.Item>Publicada 202-08-21</Timeline.Item>
         </Col>
     </Row>
+    
+    <Row>
+    <Col span={12} offset={6}>
+        <Image
+          width={200}
+          src="/images/firebase.png"
+        />
+
+      <Image
+          width={200}
+          src="/images/react.png"
+        />
+
+    <Image
+          width={200}
+          src="/images/ant_design.png"
+        />
+      </Col>
+     </Row>
+  
 
     </HomeLayout>
   )
