@@ -1,8 +1,9 @@
 import React from 'react'
 import HomeLayout from '../layout/HomeLayout'
-import { Col, Row, Alert, Statistic, Timeline, Image } from 'antd';
+import { Col, Row, Alert, Timeline, Image } from 'antd';
 import { Typography } from 'antd';
 import Marquee from 'react-fast-marquee';
+import HomeStatistics from '../components/HomeStatistics';
 
 export default function HomePage() {
   const { Title, Link } = Typography;
@@ -34,13 +35,8 @@ export default function HomePage() {
           <Alert message="Email: mfalconsoft@gmail.com" type="success" />
       </Col>
     </Row>
-    <br></br>
-    <Row >
-        <Col span={12} offset={6}>
-           <Statistic title="Números de usuarios registrados" value={1} />
-           <Statistic title="Números de links guardados." value={100} />
-        </Col>
-    </Row>
+    {/* <br></br>
+    <HomeStatistics /> */}
     
 
     <br></br>

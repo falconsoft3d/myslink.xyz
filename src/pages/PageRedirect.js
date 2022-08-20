@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {collection, onSnapshot, deleteDoc, doc, query, orderBy, where} from 'firebase/firestore';
+import {collection, onSnapshot, query, where} from 'firebase/firestore';
 import {db} from "../firebase/firebaseConfig";
-import { useNavigate, Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function PageRedirect() {
   const navigate = useNavigate();
@@ -15,10 +14,6 @@ export default function PageRedirect() {
     collection(db, 'links'),
     where('linkq', '==', urlq)
   );
-  
-  
-  console.log("myquery", myquery)
-  
   
   onSnapshot(myquery,
     (snapshot) => {
