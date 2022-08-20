@@ -4,18 +4,25 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LinksPage from "./pages/LinksPage";
 import CreateLinkPage from './pages/CreateLinkPage';
+import {AuthProvider} from './contexts/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
           <Routes>
 
           <Route path="/links" element={
-                        <LinksPage />
-                    }/> 
-
+                        <PrivateRoute>
+                          <LinksPage />
+                        </PrivateRoute>
+                    }/>
+          
           <Route path="/create-link" element={
-                        <CreateLinkPage />
-                    }/>  
+                        <PrivateRoute>
+                          <CreateLinkPage />
+                        </PrivateRoute>
+                    }/>
             
           <Route path="/login" element={
                         <LoginPage />
@@ -30,6 +37,7 @@ function App() {
                     }/>
           </Routes>
       </BrowserRouter>
+      </AuthProvider>
   );
 }
 

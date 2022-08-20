@@ -3,12 +3,12 @@ import DashboardLayout from "./../layout/DashboardLayout";
 import { Space, Table, Button, Popconfirm, notification } from 'antd';  
 import { DeleteOutlined } from '@ant-design/icons';
 import {db} from "../firebase/firebaseConfig";
-import {collection, onSnapshot, deleteDoc, doc, query, orderBy, where} from 'firebase/firestore';
-
+import {collection, onSnapshot, deleteDoc, doc, query, where} from 'firebase/firestore';
+import { useAuth } from './../contexts/AuthContext';
 
 export default function LinksPages() {
-  const [links, setLinks] = useState([])
-  const id = "GMhcMVr7PRbHDFKHMXOjVUni40K3"
+  const [links, setLinks] = useState([]);
+  const { user } = useAuth();
 
   const columns  = [
     {
@@ -38,7 +38,7 @@ export default function LinksPages() {
 
   const myquery = query(
     collection(db, 'links'),
-    where('user_id', '==', id),
+    where('user_id', '==', user.uid),
   );
 
   useEffect(() => {

@@ -4,14 +4,18 @@ import { Button, Form, Input, notification } from 'antd';
 import {collection, addDoc} from 'firebase/firestore';
 import {db} from "../firebase/firebaseConfig";
 import {useNavigate} from 'react-router-dom';
+import { useAuth } from './../contexts/AuthContext';
 
 export default function CreateLinkPage() {
   const navigate = useNavigate()
+  const { user } = useAuth();
+  
+  
   const onFinish = async (values) => {
     const data = {
       link : values.link,
       linkq : "1",
-      user_id : "GMhcMVr7PRbHDFKHMXOjVUni40K3"
+      user_id : user.uid
   }
 
     try {
@@ -22,12 +26,12 @@ export default function CreateLinkPage() {
       notification.open({
         message: 'Mensaje',
         description:
-          'Se ha agregado un gasto',
+          'Se ha agregado el link correctamente',
         duration: 2,
       });
 
       } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error: ", e);
       }
 
   };

@@ -4,21 +4,35 @@ import HomeLayout from '../layout/HomeLayout'
 import { Typography } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import "./LoginPage.css";
+import { auth } from './../firebase/firebaseConfig';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const { Title, } = Typography;
-  const onFinish = (values) => {
-    console.log('Success:', values);
 
-    notification.open({
-      message: 'Mensaje',
-      description:
-        'Se ha inciado sección correctamente',
-      onClick: () => {
-        console.log('Notification Clicked!');
-      },
-      duration: 2,
-    });
+
+  const onFinish = async (values) => {
+    console.log('Success:', values);
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password);
+      navigate('/links');
+    } catch (error) {
+      let mensaje;
+      switch (error.code) {
+        case 'auth/wrong-password':
+          mensaje = 'La contraseña no es correcta.'
+          break;
+        case 'auth/user-not-found':
+          mensaje = 'No se encontro ninguna cuenta con este correo electrónico.'
+          break;
+        default:
+          mensaje = 'Hubo un error al intentar crear la cuenta.'
+          break;
+      }
+      notification.open({ message: mensaje, description: error, duration: 2 });
+    }
   };
 
   return (
@@ -53,7 +67,7 @@ export default function LoginPage() {
                 placeholder="Contraseña"
               />
             </Form.Item>
-            
+
 
             <Form.Item>
               <Button type="primary" htmlType="submit" className="login-form-button">

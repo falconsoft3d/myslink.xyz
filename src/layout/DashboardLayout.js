@@ -7,12 +7,27 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Link} from "react-router-dom";
+import {auth} from './../firebase/firebaseConfig';
+import {signOut} from 'firebase/auth';
+import {useAuth} from './../contexts/AuthContext';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 export default function DashboardLayout(props) {
     const {children} = props;
     const [collapsed, setCollapsed] = useState(false);
+    const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const logout = async() => {
+		try {
+			await signOut(auth);
+			navigate('/login');
+		} catch(error){
+			console.log(error);
+		}
+	}
+  
     
     return (
     
@@ -36,7 +51,7 @@ export default function DashboardLayout(props) {
               <Link to="/create-link"><FileOutlined/> Crear Link</Link>
             </Menu.Item>
             <Menu.Item key="close">
-              <Link to="/logout"><LoginOutlined /> Cerrar</Link>
+              <Link to="/" onClick={logout}><LoginOutlined /> Cerrar</Link>
             </Menu.Item>
         </Menu>
       
