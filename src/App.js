@@ -6,7 +6,7 @@ import LinksPage from "./pages/LinksPage";
 import CreateLinkPage from './pages/CreateLinkPage';
 import {AuthProvider} from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
-import Redirect from './pages/Redirect';
+import PageRedirect from './pages/PageRedirect';
 function App() {
   return (
     <AuthProvider>
@@ -38,7 +38,7 @@ function App() {
                     }/>
         
          <Route path="/:id" element={
-                        <Redirect />
+                        <PageRedirect />
                     }/>
 
           </Routes>
