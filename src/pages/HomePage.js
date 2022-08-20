@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeLayout from '../layout/HomeLayout'
-import { Col, Row, Alert } from 'antd';
+import { Col, Row, Alert, Statistic, Timeline } from 'antd';
 import { Typography } from 'antd';
 import Marquee from 'react-fast-marquee';
 
@@ -36,6 +36,23 @@ export default function HomePage() {
           <Alert message="Email: mfalconsoft@gmail.com" type="success" />
       </Col>
     </Row>
+    <br></br>
+    <Row >
+        <Col span={12} offset={6}>
+           <Statistic title="Números de usuarios registrados" value={1} />
+           <Statistic title="Números de links guardados." value={100} />
+        </Col>
+    </Row>
+    
+
+    <br></br>
+    <Row >
+        <Col span={12} offset={6}>
+            <Timeline.Item>Creada la aplicación 202-08-20</Timeline.Item>
+            <Timeline.Item>Publicada 202-08-21</Timeline.Item>
+        </Col>
+    </Row>
+
     </HomeLayout>
   )
 }
