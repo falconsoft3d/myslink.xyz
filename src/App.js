@@ -37,9 +37,11 @@ function App() {
                         <HomePage />
                     }/>
         
+        
          <Route path="/:id" element={
                         <PageRedirect />
                     }/>
+         
 
           </Routes>
       </BrowserRouter>

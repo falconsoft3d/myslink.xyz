@@ -22,17 +22,17 @@ export default function NavBar() {
 
   return (
     <Menu mode="horizontal">
-      <Menu.Item><Link to="/">Home</Link></Menu.Item>
+      <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
       {!user &&
         <>
-          <Menu.Item><Link to="/admin/login">Login</Link></Menu.Item>
-          <Menu.Item><Link to="/admin/register">Registrar</Link></Menu.Item>
+          <Menu.Item key="2"><Link to="/admin/login">Login</Link></Menu.Item>
+          <Menu.Item key="3"><Link to="/admin/register">Registrar</Link></Menu.Item>
         </>
       }
       {user &&
         <>
-          <Menu.Item><Link to="/admin/links">Links</Link></Menu.Item>
-          <Menu.Item onClick={logout}>Cerrar</Menu.Item>
+          <Menu.Item key="4"><Link to="/admin/links">Links</Link></Menu.Item>
+          <Menu.Item key="5" onClick={logout}>Cerrar</Menu.Item>
         </>
       }
     </Menu>
