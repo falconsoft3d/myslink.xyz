@@ -19,7 +19,6 @@ export default function LoginPage() {
       },
       duration: 2,
     });
-
   };
 
   return (
