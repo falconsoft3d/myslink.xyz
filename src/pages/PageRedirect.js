@@ -8,10 +8,7 @@ export default function PageRedirect() {
   const navigate = useNavigate();
   const params = useParams();
   const urlq = params.id
-  console.log("urlq", urlq);
   const [lurl, setlurl] = useState("")
-  
-  // [ 1 ] Buscamos al URL en FireBase
   const myquery = query(
     collection(db, 'links'),
     where('linkq', '==', urlq)
@@ -23,19 +20,17 @@ export default function PageRedirect() {
             return {...documento.data(), id: documento.id}
         })
         if (data.length > 0) {
-             setlurl(data.url)
-             console.log(data)
+             setlurl(data[0].link)
         } else {
             navigate("/")
         }
     },
     (error) => {
         navigate('/');
-        console.log(error);
     }
-);
+)
+
   return (
-    null
-    // lurl ? ( window.location = "https://redirectsite.com" ) : navigate('/')
+    lurl ? ( window.location = lurl ) : navigate('/')
   )
 }
